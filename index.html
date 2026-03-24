@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payfy Policy — Comparativo de Versões</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary-orange: #FF6B35;
+            --primary-orange-dark: #E85A28;
+            --primary-orange-light: #FFF5F0;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --white: #FFFFFF;
+            --border: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .header-badge {
+            background: var(--primary-orange-light);
+            color: var(--primary-orange);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Grid */
+        .grid-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Card */
+        .version-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .version-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .version-label {
+            padding: 16px 20px 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .version-info {
+            flex: 1;
+        }
+
+        .version-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .version-number {
+            background: var(--primary-orange);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .version-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-left: 4px;
+        }
+
+        .version-desc {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .version-link {
+            flex-shrink: 0;
+            padding: 6px 12px;
+            background: var(--gray-50);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .version-link:hover {
+            background: var(--primary-orange-light);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        .iframe-wrapper {
+            flex: 1;
+            border-top: 1px solid var(--border);
+            position: relative;
+            height: calc(50vh - 80px);
+            min-height: 400px;
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .iframe-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-50);
+            color: var(--gray-400);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: 1fr; }
+            .iframe-wrapper { height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo-icon">📊</div>
+                <h1 class="header-title">Payfy Policy — Comparativo de Versões</h1>
+            </div>
+            <span class="header-badge">4 protótipos</span>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid">
+            <!-- V1 -->
+            <div class="version-card">
+                <div class="version-label">
+                    <div class="version-info">
+                        <div class="version-tag">
+                            <span class="version-number">V1</span>
+                            <span class="version-name">Original</span>
+                        </div>
+                        <p class="version-desc">Lista vertical de cards expandíveis com workflow builder inline. Catálogo de políticas com visão detalhada por card.</p>
+                    </div>
+                    <a class="version-link" href="https://payfyprototype.vercel.app" target="_blank">Abrir ↗</a>
+                </div>
+                <div class="iframe-wrapper">
+                    <div class="iframe-loading">Carregando V1...</div>
+                    <iframe src="https://payfyprototype.vercel.app" loading="lazy" onload="this.previousElementSibling.style.display='none'"></iframe>
+                </div>
+            </div>
+
+            <!-- V2 -->
+            <div class="version-card">
+                <div class="version-label">
+                    <div class="version-info">
+                        <div class="version-tag">
+                            <span class="version-number">V2</span>
+                            <span class="version-name">Hub de Controle</span>
+                        </div>
+                        <p class="version-desc">Split panel 60/40 — controles de spend à esquerda com accordions compactos, Agent como entidade autônoma e visível à direita.</p>
+                    </div>
+                    <a class="version-link" href="https://payfy-v2-hub.vercel.app" target="_blank">Abrir ↗</a>
+                </div>
+                <div class="iframe-wrapper">
+                    <div class="iframe-loading">Carregando V2...</div>
+                    <iframe src="https://payfy-v2-hub.vercel.app" loading="lazy" onload="this.previousElementSibling.style.display='none'"></iframe>
+                </div>
+            </div>
+
+            <!-- V3 -->
+            <div class="version-card">
+                <div class="version-label">
+                    <div class="version-info">
+                        <div class="version-tag">
+                            <span class="version-number">V3</span>
+                            <span class="version-name">Agent-First Dashboard</span>
+                        </div>
+                        <p class="version-desc">Agent como protagonista com dashboard de KPIs e feed de decisões recentes. Políticas rebaixadas para seção de referência.</p>
+                    </div>
+                    <a class="version-link" href="https://payfy-v3-agent.vercel.app" target="_blank">Abrir ↗</a>
+                </div>
+                <div class="iframe-wrapper">
+                    <div class="iframe-loading">Carregando V3...</div>
+                    <iframe src="https://payfy-v3-agent.vercel.app" loading="lazy" onload="this.previousElementSibling.style.display='none'"></iframe>
+                </div>
+            </div>
+
+            <!-- V4 -->
+            <div class="version-card">
+                <div class="version-label">
+                    <div class="version-info">
+                        <div class="version-tag">
+                            <span class="version-number">V4</span>
+                            <span class="version-name">Table View</span>
+                        </div>
+                        <p class="version-desc">Todas as 22 regras consolidadas numa tabela filtrável e ordenável. Slide-over com workflow builder. Foco em power-users.</p>
+                    </div>
+                    <a class="version-link" href="https://payfy-v4-table.vercel.app" target="_blank">Abrir ↗</a>
+                </div>
+                <div class="iframe-wrapper">
+                    <div class="iframe-loading">Carregando V4...</div>
+                    <iframe src="https://payfy-v4-table.vercel.app" loading="lazy" onload="this.previousElementSibling.style.display='none'"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
