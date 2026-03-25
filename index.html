@@ -9,8 +9,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary-orange: #FF6B35;
-            --primary-orange-dark: #E85A28;
+            --primary-orange: #E55A20;
+            --primary-orange-dark: #C94D1A;
+            --success-green: #059669;
             --primary-orange-light: #FFF5F0;
             --gray-50: #FAFAFA;
             --gray-100: #F5F5F5;
@@ -97,6 +98,36 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+        }
+
+        .grid-full {
+            margin-top: 20px;
+        }
+
+        .version-card.featured {
+            border: 2px solid var(--primary-orange);
+        }
+
+        .version-card.featured .version-number {
+            background: var(--success-green);
+        }
+
+        .version-badge-new {
+            background: var(--success-green);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: 8px;
+        }
+
+        .version-links {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
         }
 
         /* Card */
@@ -223,7 +254,7 @@
                 <div class="logo-icon">📊</div>
                 <h1 class="header-title">Payfy Policy — Comparativo de Versões</h1>
             </div>
-            <span class="header-badge">4 protótipos</span>
+            <span class="header-badge">5 protótipos</span>
         </div>
     </div>
 
@@ -298,6 +329,30 @@
                 <div class="iframe-wrapper">
                     <div class="iframe-loading">Carregando V4...</div>
                     <iframe src="https://payfy-v4-table.vercel.app" loading="lazy" onload="this.previousElementSibling.style.display='none'"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- V5 — Full Width Featured -->
+        <div class="grid-full">
+            <div class="version-card featured">
+                <div class="version-label">
+                    <div class="version-info">
+                        <div class="version-tag">
+                            <span class="version-number">V5</span>
+                            <span class="version-name">Unified Hub</span>
+                            <span class="version-badge-new">Definitiva</span>
+                        </div>
+                        <p class="version-desc">Versão consolidada: Agent-First Dashboard + split-panel + tabela filtrável + workflow builder. Duas telas: Hub de Configuração (admin) e Dashboard de Revisão (aprovador) com override bar de 4 motivos, Flags Brasil, campos customizados, threshold slider e simulação de políticas. Alinhada com PRD e diferenciais competitivos.</p>
+                    </div>
+                    <div class="version-links">
+                        <a class="version-link" href="https://payfy-v5-unified.vercel.app" target="_blank">Tela 1 ↗</a>
+                        <a class="version-link" href="https://payfy-v5-unified.vercel.app/index-v5-review.html" target="_blank">Tela 2 ↗</a>
+                    </div>
+                </div>
+                <div class="iframe-wrapper" style="height: 60vh;">
+                    <div class="iframe-loading">Carregando V5...</div>
+                    <iframe src="https://payfy-v5-unified.vercel.app" loading="lazy" onload="this.previousElementSibling.style.display='none'"></iframe>
                 </div>
             </div>
         </div>
